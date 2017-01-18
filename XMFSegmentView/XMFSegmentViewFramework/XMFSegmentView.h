@@ -29,6 +29,9 @@
 //  字体颜色 （默认是白色）
 - (UIColor *)fontColorInSegmentView : (XMFSegmentView *)segmentView;
 
+// 字体大小
+- (UIFont *)fontSizeInSegmentView : (XMFSegmentView *)segmentView;
+
 @end
 
 @protocol XMFSegmentViewDelegate <NSObject>
@@ -48,5 +51,7 @@
 @property (nonatomic, assign) NSUInteger defaultIndex; //  设置默认位置
 
 + (instancetype)createColumViewWithDefaultIndex : (NSUInteger) index;
+
+@property (nonatomic, weak) CALayer *highlightLayer;
 
 @end

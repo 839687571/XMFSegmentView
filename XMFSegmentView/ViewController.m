@@ -79,7 +79,7 @@
 
 //  高亮的颜色
 - (UIColor *)highlightColorInSegmentView:(XMFSegmentView *)segmentView {
-    return [UIColor redColor];
+    return [UIColor  blackColor];
 }
 
 //  标题字体颜色
@@ -87,5 +87,10 @@
     return [UIColor whiteColor];
 }
 
+// 字体大小等..
+- (UIFont *)fontSizeInSegmentView : (XMFSegmentView *)segmentView
+{
+    return [UIFont systemFontOfSize: 14.0];
+}
 
 @end

@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSMutableArray<UILabel *> *titles;
 
-@property (nonatomic, weak) CALayer *highlightLayer;
+
 
 @property (nonatomic, assign) NSUInteger currtentIndex;
 
@@ -72,13 +72,20 @@
     _datas = [NSMutableArray<UIButton *> arrayWithCapacity: count];
     
     UIColor *fontColor = [UIColor whiteColor];
+    UIFont * font =[UIFont systemFontOfSize: 14.0];
     if ([self.dataSource respondsToSelector: @selector(fontColorInSegmentView:)]) {
         fontColor = [self.dataSource fontColorInSegmentView:self];
+    }
+    if ([self.dataSource respondsToSelector: @selector(fontSizeInSegmentView:)]) {
+        font = [self.dataSource fontSizeInSegmentView:self];
     }
     
     for (int i = 0; i < count; i ++) {
         UIButton *btn = [self createItemWithIndex:i fontColor:fontColor];
-       // btn.backgroundColor = [UIColor redColor];
+        btn.backgroundColor = [UIColor clearColor];
+        
+        btn.titleLabel.font = font;
+        
         [self.datas addObject: btn];
         [self addSubview: btn];
     }
@@ -107,7 +114,7 @@
     _highlightLayer = highlightLayer;
     _highlightLayer.cornerRadius = 6;
   // _highlightLayer.clipsToBounds = YES;
-    [self.layer addSublayer: _highlightLayer];
+    [self.layer insertSublayer:_highlightLayer atIndex:1];
 }
 
 #pragma mark 创建按钮
